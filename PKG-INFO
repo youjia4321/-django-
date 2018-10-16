@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: blogs
+Version: 1.0.0
+Summary: A small example package
+Home-page: https://github.com/youjia4321/django_blogs
+Author: youjia4321
+Author-email: youjia4321@163.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
