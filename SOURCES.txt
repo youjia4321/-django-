@@ -64,5 +64,3 @@ blogs/user/views.py
 blogs/user/migrations/__init__.py
 blogs/utils/__init__.py
 blogs/utils/email_send.py
-blogs/utils/__pycache__/__init__.cpython-37.pyc
-blogs/utils/__pycache__/email_send.cpython-37.pyc
