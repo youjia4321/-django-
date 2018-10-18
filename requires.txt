@@ -10,3 +10,4 @@ pytz==2018.5
 setuptools==40.4.3
 six==1.11.0
 wheel==0.32.1
+django-tinymce==2.7.0
