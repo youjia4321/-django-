@@ -13,3 +13,9 @@ DATABASES = {
         'PORT': '5432'
     }
 }
+
+
+
+后台运行此项目  命令窗口   nohup python manage.py runserver 0.0.0.0:8000 &
+&用途：在后台运行	  nohup /root/start.sh &
+在shell中回车后提示然后输入：appending output to nohup.out  
