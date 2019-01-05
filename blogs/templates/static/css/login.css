@@ -1,0 +1,29 @@
+#content {
+    position: absolute;
+    height: 200px;
+    top: 50%;
+    height: 240px;
+    margin-top: -200px;
+    margin-left: 400px; 
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+a:hover {
+    color: coral;
+    font-size: 18px;
+    text-decoration: none;
+}
+body{
+    background: darkgrey;
+}
+#marb20 {
+    background-color: chocolate;
+    margin-bottom: 20px !important;
+    font-size: 14px;
+}
+.marb8 {
+    margin-bottom: 8px !important;
+}

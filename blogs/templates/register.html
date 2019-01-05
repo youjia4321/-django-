@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>注册页面</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="static/js/jquery-2.0.0.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        #content {
+            position: absolute;
+            top: 50%;
+            width: 400px;
+            height: 240px;
+            margin-top: -200px;
+            margin-left: 400px; 
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+        }
+        a:hover {
+            color: coral;
+            font-size: 15px;
+            text-decoration: none;
+        }
+        body{
+            background: darkgrey;
+        }
+        #marb20 {
+            color: red;
+            margin-bottom: 20px !important;
+            font-size: 14px;
+        }
+        .marb8 {
+            margin-bottom: 8px !important;
+        }
+        ul{ list-style:none;}
+        ul li ul li{ float:none; background-color:rgb(119, 117, 117); margin: 1px 0px; height: 35px; text-align: center; width: 100px; padding-top: 8px;}
+        ul li ul{ display:none;}
+    </style>
+    <script type="text/javascript">
+        function displaySubMenu(li) {
+            var subMenu = li.getElementsByTagName("ul")[0];
+            subMenu.style.display = "block";
+    
+    }
+        function hideSubMenu(li) {
+            var subMenu = li.getElementsByTagName("ul")[0];
+            subMenu.style.display = "none";
+    
+    }
+    </script>
+    <!-- Custom styles for this template -->
+    <!-- <link href="starter-template.css" rel="stylesheet"> -->
+
+    </head>
+
+    <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="height: 50px;">
+        <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a class="navbar-brand" href="#">简易blog</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+            <li><a href="{% url 'home' %}">主页</a></li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">用户操作</a>
+                <ul>
+                    <li><a href="{% url 'user_login' %}" style="color: black;">用户登录 </a></li>
+                    <li><a href="{% url 'register' %}" style="color: black;">用户注册 </a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">安全管理</a>
+                <ul>
+                    <li><a href="{% url 'modify' %}" style="color: black;">修改密码 </a></li>
+                    <li><a href="{% url 'forgetpwd' %}" style="color: black;">忘记密码 </a></li>
+                </ul>
+            </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 150px; margin-bottom: 120px; margin-left: 400px; width: 1500px;">
+
+            <div class="starter-template">
+    <div id="content" style="margin-left: 200px; ">
+        <form method="post" action="">
+            <div class="marb8 ">
+             <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+             <input type="text" name="email" placeholder="请填写邮箱" required/>
+            </div>
+            <div class="marb8 ">
+                <label>用 户 名</label>
+                <input type="text" name="username" placeholder="请填写昵称" required/>
+               </div>
+            <div class="marb8 ">
+             <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+             <input type="password" name="password" placeholder="请填写密码" required/>
+            </div>
+            <div class="marb8">
+             <label>验 证 码</label>{{ register_form.captcha }}
+            </div>
+            <div id="marb20">{% for key,error in register_form.errors.items %}{{ error }}{% endfor %} {{ msg }}</div>
+            <input type="submit" value="注册并登录" />
+            {% csrf_token %}
+           </form>
+    </div>
+    <div id='main' style="margin:auto; margin-top: 250px; width: 900px; height: 400px;"></div>
+    </div></div>
+    <!-- <script>
+            window.onload = function () {
+                autoMove('img','span');
+            };
+            function autoMove(tagImg,tagSpan) {
+                var imgs = document.getElementsByTagName(tagImg);
+                var spans = document.getElementsByTagName(tagSpan);
+                function InitMove(index) {
+                    for (var i = 0; i < imgs.length; i++) {
+                        imgs[i].style.display = 'none';
+                        spans[i].style.background = '#ccc';
+                    }
+                    imgs[index].style.display = 'block';
+                    spans[index].style.background = 'red';
+                }
+                InitMove(0);
+                var speed = 2000;
+                var count = 1;
+                function fMove() {
+                    if (count == imgs.length) {
+                        count = 0;
+                    }
+                    InitMove(count);
+                    count++;
+                }
+                var scollMove = setInterval(fMove, speed);
+                var btnleft = document.getElementById('btnleft');
+                var btnright = document.getElementById('btnright');
+                btnleft.onclick = function () {
+                    clearInterval(scollMove);
+                    if (count == 1) {
+                        count = imgs.length;
+                    }
+                    count--;
+                    scollMove = setInterval(InitMove(count-1), speed);
+                };
+                btnright.onclick = function () {
+                    clearInterval(scollMove);
+                    fMove();
+                    scollMove = setInterval(InitMove(count-1), speed);
+                };
+                var tab = document.getElementById('main');
+                tab.onmouseover = function () {
+                    clearInterval(scollMove);
+                };
+                tab.onmouseout = function () {
+                    scollMove = setInterval(fMove, speed);
+                };
+            }
+        </script> -->
+</body>
+</html>
